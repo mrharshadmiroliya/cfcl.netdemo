@@ -1,0 +1,284 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#NGSheet-1" aria-controls="NG Sheet-1" role="tab" data-toggle="tab"><i class="fa fa-home"></i>  <span>NG Sheet-1</span></a></li>
+    <li role="presentation"><a href="#NGSheet-2" aria-controls="NG Sheet-2" role="tab" data-toggle="tab"><i class="fa fa-user"></i>  <span>NG Sheet-2</span></a></li>
+    <li role="presentation"><a href="#CO2Sheet" aria-controls="CO2 Sheet" role="tab" data-toggle="tab"><i class="fa fa-envelope-o"></i>  <span>CO2 Sheet</span></a></li>
+    <li role="presentation"><a href="#Production" aria-controls="Production" role="tab" data-toggle="tab"><i class="fa fa-cog"></i>  <span>Production</span></a></li>
+</ul>
+
+
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="NG Sheet-1">
+        <div class="text-center">
+            @{
+                string[] a = {"", "Pressure of NG to Ammonia Plant(PI 1073)(kg / cm2 g)",
+                                  "Temperature of NG to Ammonia Plant (TI 1308) (°C)",
+"Total NG to Ammonia Plant (FQI 1042) (kNM3)",
+"Pressure of NG as GT Fuel (PI 1046)(kg/cm2 g)",
+"Temperature of NG as GT Fuel (TIC 1219)(°C)",
+"GT Fuel NG (FQI 1026) (kg)         ",
+"Pressure of NG as Reformer Fuel (PIC 1002)(kg/cm2 g)",
+"Temperature of NG as Reformer Fuel (TI 8152)(°C)",
+"NG Fuel to Primary Reformer (FQI 1015) (NM3)",
+"Pressure of NG as Superheater Fuel (PIC 1001) (kg/cm2 g)",
+"Temperature of NG as Superheater Fuel (TI 8154) (°C)",
+"NG Fuel to Superheater FQI 1015 (NM3)",
+"NG Fuel to Startup Heater FQI 1047 (NM3)",
+"NG Fuel to Flare Stack      ",
+"NG Feed (FQI 1001) (kNM3)",
+"Total Fuel (kSM3)            "};
+
+                int[] b = { 0, 3, 6, 9, 12, 13, 14, 15, 16 };
+                int i;
+                int j = 1;
+            }
+            <div class="form-row">
+                <div class="form-group col-md-6"></div>
+                <div class="form-group col-md-2"><b>Reading</b></div>
+                <div class="form-group col-md-2"><b>Diffrence</b></div>
+                <div class="form-group col-md-2"><b>Consumption(SM3)</b></div>
+            </div>
+            @for (i = 1; i <= 16; i++)
+            {
+                <div class="form-row">
+
+                    <div class="form-group col-md-6">
+                        <label for="control-label ">@a[i]</label>
+
+
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <input name="@("A3_N1_T"+@i)" class="@("A3_N1_T"+@i) form-control " placeholder="@("A3_N1_T"+@i)" />
+
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input name="@("A3_N1_T"+@i)_ID" ; class="@("A3_N1_T"+@i)_ID form-control " tabindex="-1" readonly placeholder="@("A3_N1_T"+@i)_ID" />
+                    </div>
+
+                    @if (i == b[j])
+                    {
+                        <div class="form-group col-md-2">
+                            <input name="A3_N'@i'_T'@i'_CONS" class="@("A3_N1_T" + @i)_CONS form-control " tabindex="-1" readonly placeholder="@("A3_N1_T" + @i)_CONS" />
+                        </div>
+                        j++;
+                    }
+                    else
+                    {
+                        <div class="form-group col-md-2"></div>
+                    }
+
+
+                </div>
+            }
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="NGSheet-2">
+        <div class="text-center">
+            @{
+                string[] a1 = {"", "GAIL Meter-A",
+                                      "Total NG Received (SM3)",
+"",
+"Pressure of NG as GT Fuel (PI 1046)(kg/cm2 g)",
+"Temperature of NG as GT Fuel (TIC 1219)(°C)",
+"GT Fuel NG (FQI 1026) (kg)         ",
+"Pressure of NG as Reformer Fuel (PIC 1002)(kg/cm2 g)",
+"Temperature of NG as Reformer Fuel (TI 8152)(°C)",
+"NG Fuel to Primary Reformer (FQI 1015) (NM3)",
+"Pressure of NG as Superheater Fuel (PIC 1001) (kg/cm2 g)",
+"Temperature of NG as Superheater Fuel (TI 8154) (°C)",
+"NG Fuel to Superheater FQI 1015 (NM3)",
+"NG Fuel to Startup Heater FQI 1047 (NM3)",
+"NG Fuel to Flare Stack      ",
+"NG Feed (FQI 1001) (kNM3)",
+"Total Fuel (kSM3)            "};
+
+                int[] c = { 0, 3, 6, 9, 12, 13, 14, 15, 16 };
+                j = 1;
+                ;
+            }
+            <div class="form-row">
+                <div class="form-group col-md-6"></div>
+                <div class="form-group col-md-2"><b>Reading</b></div>
+                <div class="form-group col-md-2"><b></b></div>
+                <div class="form-group col-md-2"><b></b></div>
+            </div>
+            @for (i = 1; i <= 8; i++)
+            {
+            <div class="form-row">
+                
+                    <div class="form-group col-md-3">
+                        <label for="control-label ">@a1[i]</label>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <input name="@("A3_N2_T" + @i)" class="@("A3_N2_T" + @i) form-control " placeholder="@("A3_N2_T" + @i)" />
+                    </div>
+                 <div class="form-group col-md-3">
+                        <label for="control-label ">@a1[i]</label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input name="@("A3_N2_T" + @i)" class="@("A3_N2_T" + @i) form-control " placeholder="@("A3_N2_T" + @i)" />
+                    </div>
+                
+            </div>
+            }
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="CO2Sheet">
+        hello
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Production">
+        hello
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+
+
+
+            $('.A3_N1_T1').change(function () {
+                $('.A3_N1_T1_ID').val(100 - A3_N1_T1 / (24));
+            });
+            $('.A3_N1_T2').change(function () {
+                $('.A3_N1_T2_ID').val(100 - parseFloat("0" + $('.A3_N1_T2').val()) / (24));
+            });
+            $('.A3_N1_T3').change(function () {
+                $('.A3_N1_T3_ID').val(100 - parseFloat("0" + $('.A3_N1_T3').val()) / (24));
+                $('.A3_N1_T3_CONS').val(parseFloat("0" + $('.A3_N1_T3_ID').val()) * 1000 * 288 / 273);
+            });
+            $('.A3_N1_T4').change(function () {
+                $('.A3_N1_T4_ID').val(100 - parseFloat("0" + $('.A3_N1_T4').val()) / (24));
+            });
+            $('.A3_N1_T5').change(function () {
+                $('.A3_N1_T5_ID').val(100 - parseFloat("0" + $('.A3_N1_T5').val()) / (24));
+            });
+            $('.A3_N1_T6').change(function () {
+                $('.A3_N1_T6_ID').val(100 - parseFloat("0" + $('.A3_N1_T6').val()) / (24));
+                $('.A3_N1_T6_CONS').val(((parseFloat("0" + $('.A3_N1_T6_ID').val()) * 22.414 * 288) / (parseFloat("0" + $('.A3_N1_T4').val()) * 273)) * 1000);
+            });
+            $('.A3_N1_T7').change(function () {
+                $('.A3_N1_T7_ID').val(100 - parseFloat("0" + $('.A3_N1_T7').val()) / (24));
+            });
+            $('.A3_N1_T8').change(function () {
+                $('.A3_N1_T8_ID').val(100 - parseFloat("0" + $('.A3_N1_T8').val()) / (24));
+            });
+            $('.A3_N1_T9').change(function () {
+                $('.A3_N1_T9_ID').val(100 - parseFloat("0" + $('.A3_N1_T9').val()) / (24));
+                $('.A3_N1_T9_CONS').val((parseFloat("0" + $('.A3_N1_T9_ID').val()) * 288) / 273);
+            });
+            $('.A3_N1_T10').change(function () {
+                $('.A3_N1_T10_ID').val(100 - parseFloat("0" + $('.A3_N1_T10').val()) / (24));
+            });
+            $('.A3_N1_T11').change(function () {
+                $('.A3_N1_T11_ID').val(100 - parseFloat("0" + $('.A3_N1_T11').val()) / (24));
+            });
+            $('.A3_N1_T12').change(function () {
+                $('.A3_N1_T12_ID').val(100 - parseFloat("0" + $('.A3_N1_T12').val()) / (24));
+                $('.A3_N1_T12_CONS').val((parseFloat("0" + $('.A3_N1_T12_ID').val()) * 288) / 273);
+            });
+            $('.A3_N1_T13').change(function () {
+                $('.A3_N1_T13_ID').val(100 - parseFloat("0" + $('.A3_N1_T13').val()) / (24));
+                $('.A3_N1_T13_CONS').val(parseFloat("0" + $('.A3_N1_T13_ID').val()) * (288 / 273) * (((parseFloat("0" + $('.A3_N1_T10_ID').val()) + 1.033) * 403 * 100) / (3.3033 * (parseFloat("0" + $('.A3_N1_T11_ID').val()) + 273) * 16.34)) ^ 0.5);
+            });
+            $('.A3_N1_T15').change(function () {
+                $('.A3_N1_T15_ID').val(100 - parseFloat("0" + $('.A3_N1_T15').val()) / (24));
+                $('.A3_N1_T15_CONS').val(parseFloat("0" + $('.A3_N1_T15_ID').val()) * 1000 * 288 / 273);
+            });
+            $('.A3_N1_T15').change(function () {
+                $('.A3_N1_T16_CONS').val(parseFloat("0" + $('.A3_N1_T6_CONS').val()) + parseFloat("0" + $('.A3_N1_T9_CONS').val()) + parseFloat("0" + $('.A3_N1_T12_CONS').val()) + parseFloat("0" + $('.A3_N1_T13_CONS').val()) + parseFloat("0" + $('.A3_N1_T14_CONS').val()));
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+
+            $('.A3_N2_T2').change(function () {
+                $('.A3_N2_T3_CV').val(parseFloat("0" + $('.A3_N2_T1').val()) + parseFloat("0" + $('.A3_N2_T2').val()));
+            });
+            $('.A3_N2_T8').change(function () {
+                $('.A3_N2_T8_CV').val(parseFloat("0" + $('.A3_N2_T8').val()) * 251999.9979 / parseFloat("0" + $('.A3_N2_T5').val()));
+            });
+            $('.A3_N2_T8').change(function () {
+                if (parseFloat("0" + $('.A3_N2_T3_CV').val()) > parseFloat("0" + $('.A3_N2_T8_CV').val()))
+                    $('.A3_N2_T8_CONS').val(parseFloat("0" + $('.A3_N2_T8_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val()));
+                else
+                    $('.A3_N2_T8_CONS').val(parseFloat("0" + $('.A3_N2_T3_CV').val()));
+            });
+
+            $('.A3_N2_T9').change(function () {
+                $('.A3_N2_T9_CV').val(parseFloat("0" + $('.A3_N2_T9').val()) * 251999.9979 / parseFloat("0" + $('.A3_N2_T5').val()));
+            });
+            $('.A3_N2_T9').change(function () {
+                var v1 = (parseFloat("0" + $('.A3_N2_T3_CV').val()) - parseFloat("0" + $('.A3_N2_T8_CV').val()));
+                if (v1 > parseFloat("0" + $('.A3_N2_T9_CV').val()))
+                    $('.A3_N2_T9_CONS').val(parseFloat("0" + $('.A3_N2_T9_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val()));
+                else
+                    $('.A3_N2_T9_CONS').val(parseFloat("0" + $('.A3_N2_T3_CV').val()) - (parseFloat("0" + $('.A3_N2_T8_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val())));
+            });
+
+            $('.A3_N2_T10').change(function () {
+                $('.A3_N2_T10_CV').val(parseFloat("0" + $('.A3_N2_T10').val()) * 251999.9979 / parseFloat("0" + $('.A3_N2_T5').val()));
+            });
+            var v2 = (parseFloat("0" + $('.A3_N2_T3_CV').val()) - parseFloat("0" + $('.A3_N2_T8_CV').val()) - parseFloat("0" + $('.A3_N2_T9_CV').val()));
+            $('.A3_N2_T10').change(function () {
+                if (v2 > parseFloat("0" + $('.A3_N2_T10_CV').val()))
+                    $('.A3_N2_T10_CONS').val(parseFloat("0" + $('.A3_N2_T10_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val()));
+                else
+                    $('.A3_N2_T10_CONS').val(parseFloat("0" + $('.A3_N2_T3_CV').val()) - (parseFloat("0" + $('.A3_N2_T8_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val())) - (parseFloat("0" + $('.A3_N2_T9_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val())));
+            });
+
+            $('.A3_N2_T11').change(function () {
+                $('.A3_N2_T11_CV').val(parseFloat("0" + $('.A3_N2_T11').val()) * 251999.9979 / parseFloat("0" + $('.A3_N2_T5').val()));
+            });
+
+            var v3 = (parseFloat("0" + $('.A3_N2_T3_CV').val()) - parseFloat("0" + $('.A3_N2_T8_CV').val()) - parseFloat("0" + $('.A3_N2_T9_CV').val()) - parseFloat("0" + $('.A3_N2_T10_CV').val()));
+            var v4 = (parseFloat("0" + $('.A3_N2_T11_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val()));
+            $('.A3_N2_T11').change(function () {
+                if (v3 > v4)
+                    $('.A3_N2_T11_CONS').val(parseFloat("0" + $('.A3_N2_T11_CV').val()));
+                else
+                    $('.A3_N2_T11_CONS').val(
+                        (parseFloat("0" + $('.A3_N2_T3_CV').val()) - parseFloat("0" + $('.A3_N2_T8_CV').val()) -
+                            (parseFloat("0" + $('.A3_N2_T8_CV').val()) -
+                                (parseFloat("0" + $('.A3_N2_T8_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val())) -
+                                (parseFloat("0" + $('.A3_N2_T9_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val())) -
+                                (parseFloat("0" + $('.A3_N2_T10_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val())))));
+            });
+            $('.A3_N2_T12').change(function () {
+                $('.A3_N2_T12_CV').val(parseFloat("0" + $('.A3_N2_T11').val()) * 251999.9979 / parseFloat("0" + $('.A3_N2_T5').val()));
+            });
+            $('.A3_N2_T12').change(function () {
+                var v5 = (parseFloat("0" + $('.A3_N2_T3_CV').val()) - parseFloat("0" + $('.A3_N2_T8_CV').val()) - parseFloat("0" + $('.A3_N2_T9_CV').val()) - parseFloat("0" + $('.A3_N2_T10_CV').val()) - parseFloat("0" + $('.A3_N2_T11_CV').val()));
+
+                var v6 = (parseFloat("0" + $('.A3_N2_T12_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val()));
+
+                if (v5 > v6)
+                    $('.A3_N2_T12_CONS').val(parseFloat("0" + $('.A3_N2_T12_CV').val()));
+                else
+                    $('.A3_N2_T12_CONS').val(parseFloat("0" + $('.A3_N2_T3_CV').val()) - (parseFloat("0" + $('.A3_N2_T8_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val())) - (parseFloat("0" + $('.A3_N2_T9_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val())) - (parseFloat("0" + $('.A3_N2_T10_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val())) - (parseFloat("0" + $('.A3_N2_T11_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val())));
+
+            });
+            $('.A3_N2_T16').change(function () {
+                $('.A3_N2_T19_CV').val(parseFloat("0" + $('.A3_N1_T16_CONS').val()));
+            });
+            $('.A3_N2_T16').change(function () {
+                $('.A3_N2_T20_CV').val(parseFloat("0" + $('.A3_N2_T18_CV').val()) - parseFloat("0" + $('.A3_N1_T16_CONS').val()));
+            });
+
+            $('.A3_N2_T22').change(function () {
+                $('.A3_N2_T22_CV').val(parseFloat("0" + $('.A3_N2_T22').val()) * 251999.9979 / parseFloat("0" + $('.A3_N2_T5').val()));
+                $('.A3_N2_T22_CONS').val(parseFloat("0" + $('.A3_N2_T3_CV').val()) - (parseFloat("0" + $('.A3_N2_T8_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val())) - (parseFloat("0" + $('.A3_N2_T9_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val())) - (parseFloat("0" + $('.A3_N2_T10_CV').val()) * parseFloat("0" + $('.A3_N2_T5').val()) / parseFloat("0" + $('.A3_N2_T5').val())));
+            });
+
+        });
+    </script>
+}
